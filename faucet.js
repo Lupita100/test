@@ -1295,10 +1295,10 @@ var faucetVM = new function () {
     var self = this;    
     var form = $('#ClaimForm');
 
-    self.interval = 60000;
+    self.interval = 60;
 
     self.referralURL = ko.observable('');
-    self.balance = ko.observable(0);
+    self.balance = 1.00000000;
     self.referralCount = ko.observable(0);
     self.referralTotal = ko.observable(0);
     
@@ -1309,7 +1309,7 @@ var faucetVM = new function () {
     self.alertPageTitle = ko.observable(true, { persistKey: 'alertPageTitle' });
     self.alertPlaySound = ko.observable(true, { persistKey: 'alertPlaySound' });
     
-    self.claimAmount = ko.observable(0);
+    self.claimAmount = 1.00000000;
     self.canClaim = ko.observable(true);
     self.resultHtml = ko.observable('');
     self.captchaType = ko.observable(0, { persistKey: 'CaptchaType' });
@@ -1320,8 +1320,8 @@ var faucetVM = new function () {
 
     self.pageTitle = document.title;
 
-    self.claimedAmount = 1.5;
-    self.baseClaimedAmount = 1.5;
+    self.claimedAmount = 1.00000000;
+    self.baseClaimedAmount = 1.00000000;
     self.loyaltyBonus = ko.observable(0);
     self.referralBonus = ko.observable(0);
     self.mysteryBonus = ko.observable(0);
