@@ -1444,7 +1444,7 @@ var faucetVM = new function () {
         var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
         $(".claimbreakdown td").eq(1).html(string);
         $(".claimbreakdown td:nth-child(2)").html(string);
-        
+
         if (self.captchaType() == 1 || self.validate()) {
             $(self.currentAnimate).stop();
             $('#ClaimModal').modal('hide');
@@ -1456,6 +1456,9 @@ var faucetVM = new function () {
             callAPI('faucet', 'FaucetClaim', { adBlocked: (!$('#claimAd').is(":visible")), captchaResponse: captchaResponse, instantClaim: !instantClaim, fp: self.fp, version: $('#faucetVersion').val() }, 'Faucet claim', 'Processing claim',
                 function (response) {
                     if (response.result) {
+                        var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+                        $(".claimbreakdown td").eq(1).html(string);
+                        $(".claimbreakdown td:nth-child(2)").html(string);
                         self.balance('0.10000000');
                         self.resultHtml(response.resultHtml);
 
@@ -1477,6 +1480,9 @@ var faucetVM = new function () {
                 function () {
                     grecaptcha.reset();
                     self.refreshClaimSummary();
+                    var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+                    $(".claimbreakdown td").eq(1).html(string);
+                    $(".claimbreakdown td:nth-child(2)").html(string);
                 });
         };
     }
@@ -1488,6 +1494,9 @@ var faucetVM = new function () {
 
 $(document).ready(function () {
     //Get fingerprint
+    var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+    $(".claimbreakdown td").eq(1).html(string);
+    $(".claimbreakdown td:nth-child(2)").html(string);
     new Fingerprint2().get(function (result) { faucetVM.fp = result; });
 
     //Load view models
