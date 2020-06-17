@@ -1446,7 +1446,7 @@ var faucetVM = new function () {
             callAPI('faucet', 'FaucetClaim', { adBlocked: (!$('#claimAd').is(":visible")), captchaResponse: captchaResponse, instantClaim: !instantClaim, fp: self.fp, version: $('#faucetVersion').val() }, 'Faucet claim', 'Processing claim',
                 function (response) {
                     if (response.result) {
-                        self.balance('0.10000000');
+                        self.balance(0.10000000);
                         self.resultHtml(response.resultHtml);
 
                         form[0].reset();
