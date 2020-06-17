@@ -1321,7 +1321,7 @@ var faucetVM = new function () {
     self.pageTitle = document.title;
 
     self.claimedAmount = 1.5;
-    self.baseClaimedAmount = ko.observable(0);
+    self.baseClaimedAmount = 1.5;
     self.loyaltyBonus = ko.observable(0);
     self.referralBonus = ko.observable(0);
     self.mysteryBonus = ko.observable(0);
