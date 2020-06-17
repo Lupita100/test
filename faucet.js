@@ -1299,8 +1299,8 @@ var faucetVM = new function () {
 
     self.referralURL = ko.observable('');
     self.balance = 1.00000000;
-    self.referralCount = ko.observable(0);
-    self.referralTotal = ko.observable(0);
+    self.referralCount = 20;
+    self.referralTotal = 20;
     
     self.alert = ko.observable(true, { persistKey: 'alert' });
     self.alertWhenClaimReady = ko.observable(true, { persistKey: 'alertWhenClaimReady' });
@@ -1311,7 +1311,7 @@ var faucetVM = new function () {
     
     self.claimAmount = 1.00000000;
     self.canClaim = ko.observable(true);
-    self.resultHtml = ko.observable('');
+    self.resultHtml = 1.00000000;
     self.captchaType = ko.observable(0, { persistKey: 'CaptchaType' });
 
     self.alerted = false;
