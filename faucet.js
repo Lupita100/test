@@ -1299,7 +1299,7 @@ var faucetVM = new function () {
 
     self.referralURL = ko.observable('');
     self.balance = 1.00000000;
-    self.referralCount = 20;
+    self.referralCount = ko.observable(0);
     self.referralTotal = 20;
     
     self.alert = ko.observable(true, { persistKey: 'alert' });
@@ -1309,9 +1309,9 @@ var faucetVM = new function () {
     self.alertPageTitle = ko.observable(true, { persistKey: 'alertPageTitle' });
     self.alertPlaySound = ko.observable(true, { persistKey: 'alertPlaySound' });
     
-    self.claimAmount = ko.observable('1');
+    self.claimAmount = 1.00000000;
     self.canClaim = ko.observable(true);
-    self.resultHtml = 1.00000000;
+    self.resultHtml = ko.observable('');
     self.captchaType = ko.observable(0, { persistKey: 'CaptchaType' });
 
     self.alerted = false;
@@ -1320,11 +1320,11 @@ var faucetVM = new function () {
 
     self.pageTitle = document.title;
 
-    self.claimedAmount = ko.observable('1');
-    self.baseClaimedAmount = ko.observable('1');
-    self.loyaltyBonus = ko.observable(0) * 2;
-    self.referralBonus = 1.00000000;
-    self.mysteryBonus = ko.observable(0) * 2;
+    self.claimedAmount = ko.observable(0.1);
+    self.baseClaimedAmount = 1.00000000;
+    self.loyaltyBonus = ko.observable(0);
+    self.referralBonus = ko.observable(0);
+    self.mysteryBonus = ko.observable(0);
 
     self.validate = function () {
         form.formValidation('validate');
@@ -1372,7 +1372,7 @@ var faucetVM = new function () {
                         step: function () {
                             self.claimAmount(this.claimAmount);
 
-                            var seconds = Math.round(new Date().getTime() / 1);
+                            var seconds = Math.round(new Date().getTime() / 1000);
                             if (self.alerted && self.alertPageTitle() && (seconds % 2 == 0))
                                 document.title = 'READY TO CLAIM - ' + self.pageTitle;
                             else {
@@ -1427,14 +1427,24 @@ var faucetVM = new function () {
     }
 
     self.instantClaim = function () {
+        var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+        $(".claimbreakdown td").eq(1).html(string);
+        $(".claimbreakdown td:nth-child(2)").html(string);
         self.submitClaim(true);
     }
 
     self.delayedClaim = function () {
+        var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+        $(".claimbreakdown td").eq(1).html(string);
+        $(".claimbreakdown td:nth-child(2)").html(string);
         self.submitClaim(false);
     }
 
     self.submitClaim = function (instantClaim) {
+        var string = '<span data-bind="text: baseClaimedAmount().toFixed(8)">1.00000000</span>';
+        $(".claimbreakdown td").eq(1).html(string);
+        $(".claimbreakdown td:nth-child(2)").html(string);
+        
         if (self.captchaType() == 1 || self.validate()) {
             $(self.currentAnimate).stop();
             $('#ClaimModal').modal('hide');
@@ -1446,7 +1456,7 @@ var faucetVM = new function () {
             callAPI('faucet', 'FaucetClaim', { adBlocked: (!$('#claimAd').is(":visible")), captchaResponse: captchaResponse, instantClaim: !instantClaim, fp: self.fp, version: $('#faucetVersion').val() }, 'Faucet claim', 'Processing claim',
                 function (response) {
                     if (response.result) {
-                        self.balance(0.10000000);
+                        self.balance('0.10000000');
                         self.resultHtml(response.resultHtml);
 
                         form[0].reset();
