@@ -1452,11 +1452,11 @@ var faucetVM = new function () {
                         form[0].reset();
                         form.data('formValidation').resetForm();
 
-                        self.baseClaimedAmount(response.baseClaimAmount*10);
+                        self.baseClaimedAmount(0.10000000);
                         self.loyaltyBonus(response.loyaltyBonus*10);
                         self.referralBonus(response.referralBonus*10);
                         self.mysteryBonus(response.mysteryBonus*10);
-                        self.claimedAmount(response.claimAmount*10);
+                        self.claimedAmount(response.claimAmount);
 
                         $('#FaucetClaimModal').modal('show');
                     }
