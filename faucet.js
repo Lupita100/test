@@ -1352,7 +1352,7 @@ var faucetVM = new function () {
                 ko.applyBindings(self, $('#ReferModal')[0]);
 
                 //Start refresh cycle
-                self.refreshClaimSummary();
+                //self.refreshClaimSummary();
             }, null, null);
     }
 
@@ -1376,7 +1376,7 @@ var faucetVM = new function () {
                             if (self.alerted && self.alertPageTitle() && (seconds % 2 == 0))
                                 document.title = 'READY TO CLAIM - ' + self.pageTitle;
                             else {
-                                document.title = self.claimAmount().toFixed(self.claimAmount() >= 0.001 ? 4 : 8) + ' - ' + self.pageTitle;   
+                                document.title = self.claimAmount().toFixed(self.claimAmount() <= 0.101 ? 4 : 8) + ' - ' + self.pageTitle;   
                             }
                                 
 
