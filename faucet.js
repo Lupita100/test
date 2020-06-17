@@ -1322,9 +1322,9 @@ var faucetVM = new function () {
 
     self.claimedAmount = 1.00000000;
     self.baseClaimedAmount = 1.00000000;
-    self.loyaltyBonus = ko.observable(0);
-    self.referralBonus = ko.observable(0);
-    self.mysteryBonus = ko.observable(0);
+    self.loyaltyBonus = ko.observable(0) * 2;
+    self.referralBonus = 1.00000000;
+    self.mysteryBonus = ko.observable(0) * 2;
 
     self.validate = function () {
         form.formValidation('validate');
