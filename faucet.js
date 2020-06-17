@@ -1372,7 +1372,7 @@ var faucetVM = new function () {
                         step: function () {
                             self.claimAmount(this.claimAmount);
 
-                            var seconds = Math.round(new Date().getTime() / 1000);
+                            var seconds = Math.round(new Date().getTime() / 1);
                             if (self.alerted && self.alertPageTitle() && (seconds % 2 == 0))
                                 document.title = 'READY TO CLAIM - ' + self.pageTitle;
                             else {
