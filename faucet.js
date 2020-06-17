@@ -1309,7 +1309,7 @@ var faucetVM = new function () {
     self.alertPageTitle = ko.observable(true, { persistKey: 'alertPageTitle' });
     self.alertPlaySound = ko.observable(true, { persistKey: 'alertPlaySound' });
     
-    self.claimAmount = ko.observable(1);
+    self.claimAmount = ko.observable('1');
     self.canClaim = ko.observable(true);
     self.resultHtml = 1.00000000;
     self.captchaType = ko.observable(0, { persistKey: 'CaptchaType' });
@@ -1320,8 +1320,8 @@ var faucetVM = new function () {
 
     self.pageTitle = document.title;
 
-    self.claimedAmount = ko.observable(1);
-    self.baseClaimedAmount = ko.observable(1);
+    self.claimedAmount = ko.observable('1');
+    self.baseClaimedAmount = ko.observable('1');
     self.loyaltyBonus = ko.observable(0) * 2;
     self.referralBonus = 1.00000000;
     self.mysteryBonus = ko.observable(0) * 2;
