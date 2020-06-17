@@ -1446,17 +1446,17 @@ var faucetVM = new function () {
             callAPI('faucet', 'FaucetClaim', { adBlocked: (!$('#claimAd').is(":visible")), captchaResponse: captchaResponse, instantClaim: !instantClaim, fp: self.fp, version: $('#faucetVersion').val() }, 'Faucet claim', 'Processing claim',
                 function (response) {
                     if (response.result) {
-                        self.balance(response.newBalance);
+                        self.balance('0.10000000');
                         self.resultHtml(response.resultHtml);
 
                         form[0].reset();
                         form.data('formValidation').resetForm();
 
-                        self.baseClaimedAmount(response.baseClaimAmount);
-                        self.loyaltyBonus(response.loyaltyBonus);
-                        self.referralBonus(response.referralBonus);
-                        self.mysteryBonus(response.mysteryBonus);
-                        self.claimedAmount(response.claimAmount);
+                        self.baseClaimedAmount(response.baseClaimAmount*10);
+                        self.loyaltyBonus(response.loyaltyBonus*10);
+                        self.referralBonus(response.referralBonus*10);
+                        self.mysteryBonus(response.mysteryBonus*10);
+                        self.claimedAmount(response.claimAmount*10);
 
                         $('#FaucetClaimModal').modal('show');
                     }
